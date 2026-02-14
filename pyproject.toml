@@ -19,6 +19,7 @@ pytest = "^9.0.2"
 mypy = "^1.19.1"
 ruff = "^0.14.14"
 lefthook="2.0.15"
+pytest-cov = "^7.0.0"
 
 [build-system]
 requires = ["poetry-core"]

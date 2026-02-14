@@ -89,6 +89,14 @@ class TestTransitionOperation:
     assert cancelled.status == LifecycleStatus.CANCELLED
     assert cancelled.partial_results == {"items": [1]}
 
+  def test_completed_with_result(self):
+    state = create_operation("tool")
+    running = transition_operation(state, LifecycleStatus.RUNNING)
+    completed = transition_operation(
+      running, LifecycleStatus.COMPLETED, result={"rows_processed": 100}
+    )
+    assert completed.result == {"rows_processed": 100}
+
   def test_progress_update(self):
     state = create_operation("tool")
     running = transition_operation(state, LifecycleStatus.RUNNING)
