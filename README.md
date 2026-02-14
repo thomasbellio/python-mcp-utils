@@ -1,10 +1,17 @@
 # mcp_utils
 
-A Python library that houses several utilities that are useful for implementing mcp servers
+A Python (Pydantic v2) implementation of the [mcp-utils-schema](https://github.com/thomasbellio/mcp-utils-schema) CUE schemas. This foundational library provides type-safe data models for error handling, progress tracking, cancellation, and operation lifecycle management that downstream MCP server implementations depend on.
 
+[![Tests](https://github.com/thomasbellio/python-mcp-utils/.github/workflows/pr.yml/badge.svg)](https://github.com/thomasbellio/python-mcp-utils/.github/workflows/pr.yml)
 
-[![Tests](https://github.com/thomasbellio/mcp_utils/actions/workflows/pr.yml/badge.svg)](https://github.com/thomasbellio/mcp_utils/actions/workflows/pr.yml)
+## Features
 
+- **Error taxonomy** -- Structured error responses with code ranges (connection, auth, query, data, system, operation)
+- **Progress tracking** -- Metrics with percentage consistency validation and verbosity levels
+- **Cancellation tokens** -- Cooperative cancellation with reason/source tracking
+- **Operation state** -- Full lifecycle management (created, running, paused, completed, failed, cancelled) with validated transitions
+- **MCP notifications** -- Transport-agnostic notification models with optional JSON-RPC wrappers
+- **Immutable models** -- All types are frozen Pydantic models, serializing to camelCase for wire compatibility
 
 ## Installation
 
@@ -12,13 +19,20 @@ A Python library that houses several utilities that are useful for implementing 
 pip install mcp_utils
 ```
 
-## Usage
+Requires Python 3.14+.
+
+## Quick Start
 
 ```python
-from mcp_utils import example_function
+from mcp_utils import create_operation, transition_operation, LifecycleStatus
 
-result = example_function()
+# Create and transition an operation
+op = create_operation("my_tool")
+op = transition_operation(op, LifecycleStatus.RUNNING)
+op = transition_operation(op, LifecycleStatus.COMPLETED)
 ```
+
+For detailed usage, see [USAGE.md](USAGE.md).
 
 ## Development
 
@@ -31,24 +45,10 @@ This project uses [uv](https://github.com/astral-sh/uv) for environment manageme
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-2. Create a virtual environment:
+2. Create a virtual environment and install dependencies:
 ```bash
 uv venv
-```
-
-3. Activate the virtual environment:
-```bash
-# On Unix/macOS
-source .venv/bin/activate
-
-# On Windows
-.venv\Scripts\activate
-```
-
-4. Install dependencies:
-```bash
-uv pip install poetry
-poetry install
+uv sync
 ```
 
 ### Development Tools
@@ -56,7 +56,7 @@ poetry install
 This project uses the following development tools:
 
 - **ruff**: Linting and formatting
-- **mypy**: Type checking
+- **mypy**: Type checking (with pydantic plugin)
 - **pytest**: Testing
 - **lefthook**: Git hooks for pre-commit checks
 
