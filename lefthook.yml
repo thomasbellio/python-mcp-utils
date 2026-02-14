@@ -5,5 +5,5 @@ pre-commit:
   parallel: false
   commands:
     build:
-      run: uv run ./scripts/build.sh
+      run: uv run ./scripts/build.sh --with-coverage
       stage_fixed: true
