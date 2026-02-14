@@ -2,7 +2,7 @@
 
 A Python (Pydantic v2) implementation of the [mcp-utils-schema](https://github.com/thomasbellio/mcp-utils-schema) CUE schemas. This foundational library provides type-safe data models for error handling, progress tracking, cancellation, and operation lifecycle management that downstream MCP server implementations depend on.
 
-[![Tests](https://github.com/thomasbellio/python-mcp-utils/.github/workflows/pr.yml/badge.svg)](https://github.com/thomasbellio/python-mcp-utils/blob/master/.github/workflows/push.yml)
+[![Tests](https://github.com/thomasbellio/python-mcp-utils/actions/workflows/push.yml/badge.svg?branch=master)](https://github.com/thomasbellio/python-mcp-utils/actions/workflows/push.yml)
 
 ## Features
 
