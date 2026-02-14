@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(./src/**)",
+      "Read(./tests/**)",
+      "Read(./docs/**)",
+      "Read(./CLAUDE.md)",
+      "Read(./cue-to-python-mapping.md)",
+      "Read(./pyproject.toml)",
+      "Read(./README.md)",
+      "Edit(./src/**)",
+      "Edit(./tests/**)",
+      "Edit(./docs/**)",
+      "Write(./src/**)",
+      "Write(./tests/**)",
+      "Write(./docs/**)",
+      "Bash(ruff check:*)",
+      "Bash(ruff format:*)",
+      "Bash(mypy:*)",
+      "Bash(pytest:*)",
+      "Bash(poetry:*)",
+      "Bash(uv:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(cat:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(tree:*)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  },
+  "env": {
+    "PYTHONPATH": "./src"
+  }
+}
