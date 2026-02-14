@@ -149,3 +149,4 @@ cython_debug/
 .uv/
 uv.lock
 .claude/settings.local.json
+claude-api-key.txt
