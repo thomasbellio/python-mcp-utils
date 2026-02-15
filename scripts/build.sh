@@ -11,7 +11,7 @@ mypy src/mcp_utils
 
 echo "🧪 Running tests..."
 if [[ "$1" == "--with-coverage" ]]; then
-  pytest --cov=src/mcp_utils --cov-report=term-missing --cov-report=xml:coverage.xml --cov-fail-under=100
+  pytest --cov=src/mcp_utils --cov-branch --cov-report=xml --cov-fail-under=100
 else
   pytest
 fi
